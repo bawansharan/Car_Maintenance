@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="layout/base :: layout(~{::body})">
+<body>
+<!-- Hero Section -->
+<section class="hero position-relative text-white text-center">
+    <img src="/img/ferrari-hero.jpg" class="img-fluid w-100" style="height: 80vh; object-fit: cover;" alt="Car Hero">
+    <div class="hero-overlay position-absolute top-50 start-50 translate-middle">
+        <h1 class="fw-bold display-4">Drive Anywhere, Anytime</h1>
+        <p class="lead">Affordable car rentals with 24/7 support</p>
+        <a href="/reservation" class="btn btn-accent btn-lg mt-3">Book Now</a>
+    </div>
+</section>
+
+<!-- Featured Cars -->
+<section class="py-5 container">
+    <h2 class="text-center mb-4 fw-bold">Our Featured Cars</h2>
+    <div class="row g-4">
+        <div class="col-md-3">
+            <div class="card shadow-sm h-100">
+                <img src="/img/car1.jpg" class="card-img-top" alt="Car 1">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Toyota Corolla</h5>
+                    <p class="text-muted">$35/day</p>
+                    <a href="/reservation" class="btn btn-accent">Rent Now</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card shadow-sm h-100">
+                <img src="/img/car2.jpg" class="card-img-top" alt="Car 2">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Honda Civic</h5>
+                    <p class="text-muted">$40/day</p>
+                    <a href="/reservation" class="btn btn-accent">Rent Now</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card shadow-sm h-100">
+                <img src="/img/car3.jpg" class="card-img-top" alt="Car 3">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Nissan X-Trail</h5>
+                    <p class="text-muted">$55/day</p>
+                    <a href="/reservation" class="btn btn-accent">Rent Now</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card shadow-sm h-100">
+                <img src="/img/car4.jpg" class="card-img-top" alt="Car 4">
+                <div class="card-body text-center">
+                    <h5 class="card-title">BMW 3 Series</h5>
+                    <p class="text-muted">$80/day</p>
+                    <a href="/reservation" class="btn btn-accent">Rent Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Benefits -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center mb-4 fw-bold">Why Choose Us?</h2>
+        <div class="row text-center g-4">
+            <div class="col-md-3">
+                <i class="bi bi-cash-stack display-5 text-accent"></i>
+                <h5 class="mt-2">Affordable Rates</h5>
+            </div>
+            <div class="col-md-3">
+                <i class="bi bi-headset display-5 text-accent"></i>
+                <h5 class="mt-2">24/7 Support</h5>
+            </div>
+            <div class="col-md-3">
+                <i class="bi bi-tools display-5 text-accent"></i>
+                <h5 class="mt-2">Well-Maintained</h5>
+            </div>
+            <div class="col-md-3">
+                <i class="bi bi-laptop display-5 text-accent"></i>
+                <h5 class="mt-2">Easy Online Booking</h5>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials -->
+<section class="py-5 container">
+    <h2 class="text-center mb-4 fw-bold">What Our Customers Say</h2>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active text-center">
+                        <p class="lead">"Booking was super easy and the car was in perfect condition. Highly recommend!"</p>
+                        <h6>- Sarah J.</h6>
+                    </div>
+                    <div class="carousel-item text-center">
+                        <p class="lead">"Great rates and friendly service. I’ll definitely rent again."</p>
+                        <h6>- David R.</h6>
+                    </div>
+                    <div class="carousel-item text-center">
+                        <p class="lead">"24/7 support really helped when I had to extend my booking. Excellent service!"</p>
+                        <h6>- Nimal P.</h6>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>
