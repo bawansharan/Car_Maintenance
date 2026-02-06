@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="layout/base :: layout(~{::content})">
+<head>
+    <title th:text="${#strings.isEmpty(record.id) ? 'New' : 'Edit'} + ' Maintenance Record - DriveGo Rentals'"></title>
+</head>
+<body>
+<div th:fragment="content">
+    <div class="container py-4">
+        <!-- Success Message -->
+        <div th:if="${successMessage}" class="alert alert-success alert-dismissible fade show" role="alert">
+            <i class="fas fa-check-circle me-2"></i>
+            <span th:text="${successMessage}"></span>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        
+        <!-- Error Message -->
+        <div th:if="${errorMessage}" class="alert alert-danger alert-dismissible fade show" role="alert">
+            <i class="fas fa-exclamation-circle me-2"></i>
+            <span th:text="${errorMessage}"></span>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        
+        <h2 th:text="${#strings.isEmpty(record.id) ? 'New' : 'Edit'} + ' Maintenance Record'"></h2>
+        <form th:action="${#strings.isEmpty(record.id) ? '/maintenance' : '/maintenance/' + record.id}" th:object="${record}" method="post" class="row g-3">
+            <div class="col-md-6">
+                <label class="form-label">Vehicle ID</label>
+                <input class="form-control" type="text" th:field="*{vehicleId}">
+                <div class="text-danger" th:if="${#fields.hasErrors('vehicleId')}" th:errors="*{vehicleId}"></div>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Maintenance Type</label>
+                <input class="form-control" type="text" th:field="*{maintenanceType}">
+                <div class="text-danger" th:if="${#fields.hasErrors('maintenanceType')}" th:errors="*{maintenanceType}"></div>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Service Date</label>
+                <input class="form-control" type="date" th:field="*{serviceDate}">
+                <div class="text-danger" th:if="${#fields.hasErrors('serviceDate')}" th:errors="*{serviceDate}"></div>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Service Center</label>
+                <input class="form-control" type="text" th:field="*{serviceCenter}">
+                <div class="text-danger" th:if="${#fields.hasErrors('serviceCenter')}" th:errors="*{serviceCenter}"></div>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Cost</label>
+                <input class="form-control" type="number" step="0.01" th:field="*{cost}">
+                <div class="text-danger" th:if="${#fields.hasErrors('cost')}" th:errors="*{cost}"></div>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Technician <small class="text-muted">(Optional)</small></label>
+                <input class="form-control" type="text" th:field="*{technician}" placeholder="Enter technician name">
+                <div class="text-danger" th:if="${#fields.hasErrors('technician')}" th:errors="*{technician}"></div>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Estimated Readiness <small class="text-muted">(Optional)</small></label>
+                <input class="form-control" type="date" th:field="*{estimatedReadiness}">
+                <div class="text-danger" th:if="${#fields.hasErrors('estimatedReadiness')}" th:errors="*{estimatedReadiness}"></div>
+            </div>
+            <div class="col-12">
+                <label class="form-label">Notes</label>
+                <textarea class="form-control" rows="3" th:field="*{notes}"></textarea>
+            </div>
+            <div class="col-12 d-flex gap-2">
+                <button class="btn btn-primary btn-pill" type="submit">Save</button>
+                <a class="btn btn-secondary btn-pill" th:href="@{/maintenance}">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

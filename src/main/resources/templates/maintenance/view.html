@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security" 
+      th:replace="layout/base :: layout(~{::content})">
+<head>
+    <title>Maintenance Record - DriveGo Rentals</title>
+</head>
+<body>
+<div th:fragment="content">
+    <div class="container py-4">
+        <!-- Success Message -->
+        <div th:if="${successMessage}" class="alert alert-success alert-dismissible fade show" role="alert">
+            <i class="fas fa-check-circle me-2"></i>
+            <span th:text="${successMessage}"></span>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        
+        <!-- Error Message -->
+        <div th:if="${errorMessage}" class="alert alert-danger alert-dismissible fade show" role="alert">
+            <i class="fas fa-exclamation-circle me-2"></i>
+            <span th:text="${errorMessage}"></span>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2 class="mb-0">Maintenance Record</h2>
+            <div class="d-flex gap-2">
+                <a class="btn btn-outline-primary btn-pill" th:href="@{'/maintenance/' + ${record.id} + '/edit'}" sec:authorize="hasRole('ADMIN')">Edit</a>
+                <a class="btn btn-secondary btn-pill" th:href="@{/maintenance}">Back</a>
+            </div>
+        </div>
+        <dl class="row">
+            <dt class="col-sm-3">ID</dt>
+            <dd class="col-sm-9" th:text="${record.id}"></dd>
+
+            <dt class="col-sm-3">Vehicle ID</dt>
+            <dd class="col-sm-9" th:text="${record.vehicleId}"></dd>
+
+            <dt class="col-sm-3">Maintenance Type</dt>
+            <dd class="col-sm-9" th:text="${record.maintenanceType}"></dd>
+
+            <dt class="col-sm-3">Service Date</dt>
+            <dd class="col-sm-9" th:text="${record.serviceDate}"></dd>
+
+            <dt class="col-sm-3">Service Center</dt>
+            <dd class="col-sm-9" th:text="${record.serviceCenter}"></dd>
+
+            <dt class="col-sm-3">Cost</dt>
+            <dd class="col-sm-9" th:text="${#numbers.formatDecimal(record.cost,1,'COMMA',2,'POINT')}"></dd>
+
+            <dt class="col-sm-3">Technician</dt>
+            <dd class="col-sm-9" th:text="${record.technician ?: 'Not assigned'}"></dd>
+
+            <dt class="col-sm-3">Estimated Readiness</dt>
+            <dd class="col-sm-9" th:text="${record.estimatedReadiness ?: 'Not set'}"></dd>
+
+            <dt class="col-sm-3">Status</dt>
+            <dd class="col-sm-9">
+                <span th:if="${record.isAvailable()}" class="badge bg-success">Available</span>
+                <span th:unless="${record.isAvailable()}" class="badge bg-warning">Under Maintenance</span>
+            </dd>
+
+            <dt class="col-sm-3">Notes</dt>
+            <dd class="col-sm-9" th:text="${record.notes}"></dd>
+        </dl>
+    </div>
+</div>
+</body>
+</html>
